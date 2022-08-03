@@ -7,7 +7,9 @@ import LoginPage from '../../views/LoginPage';
 import HomePage from '../../views/HomePage';
 import { Cache } from 'react-native-cache';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Stack = createNativeStackNavigator();
+
 export const cache = new Cache({
   namespace: 'toDoMobApp',
   policy: {
@@ -16,10 +18,11 @@ export const cache = new Cache({
   },
   backend: AsyncStorage,
 });
+
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="Slash" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Slash" component={Slash} />
         <Stack.Screen name="HomeScreen" component={HomePage} />
         <Stack.Screen name="LoginScreen" component={LoginPage} />

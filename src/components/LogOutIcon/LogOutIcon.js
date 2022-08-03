@@ -1,9 +1,9 @@
-import { View } from 'react-native';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import React from 'react';
 import { Svg, Path } from 'react-native-svg';
-const LogOutIcon = () => {
+const LogOutIcon = ({ onPress }) => {
   return (
-    <>
+    <TouchableWithoutFeedback onPress={onPress}>
       <Svg
         width="24"
         height="24"
@@ -32,7 +32,7 @@ const LogOutIcon = () => {
           strokeLinejoin="round"
         />
       </Svg>
-    </>
+    </TouchableWithoutFeedback>
   );
 };
 

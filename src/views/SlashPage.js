@@ -5,10 +5,14 @@ import CustomButton from '../components/CustomButton/CustomButton';
 import textStyles from '../styles/textStyles';
 import Ellipses from '../components/Ellipses/Ellipses';
 import mainStyles from '../styles/main';
-
+import { cache } from '../components/App/app';
 const Slash = ({ navigation }) => {
+  /* const resetCache = async () => {
+    const reset = await cache.clearAll();
+  };
+  resetCache(); */
   return (
-    <View style={[mainStyles.container,{flex:1}]}>
+    <View style={[mainStyles.container, { flex: 1 }]}>
       <Ellipses />
       <View style={styles.image}>
         <SlashPageImage />

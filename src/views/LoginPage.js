@@ -51,7 +51,7 @@ const LoginPage = ({ navigation }) => {
       if (userData) {
         userData = JSON.parse(userData);
         if (email == inputValues.email && password == userData.password) {
-          navigation.navigate('HomeScreen');
+          navigation.navigate('HomeScreen', { email });
         } else {
           Alert.alert('Error', 'Invalid details');
         }
@@ -62,15 +62,6 @@ const LoginPage = ({ navigation }) => {
       console.log(error);
     }
   };
-  /* et a = 'Biba@mail.ru';
-  let b = JSON.stringify({ password: 12345678, name: 'Andrew' });
-
-  const c = async () => {
-    await cache.set(a, b);
-    const data = await cache.get(a);
-    console.log(data);
-  };
-  c(); */
   const onError = (errorMessage, input) => {
     setErrors((state) => ({
       ...state,
@@ -133,7 +124,14 @@ const LoginPage = ({ navigation }) => {
           justifyContent: 'center',
         })}>
         <Text style={styles.text}>Don’t have an account?</Text>
-        <Text style={StyleSheet.compose(styles.text, styles.link)}> Sign Up</Text>
+        <Text
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={StyleSheet.compose(styles.text, styles.link)}>
+          {' '}
+          Sign Up
+        </Text>
       </View>
     </View>
   );

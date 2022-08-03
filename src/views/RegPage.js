@@ -59,18 +59,17 @@ export default function RegPage({ navigation }) {
     }
 
     if (isValid) {
-      register(email,name,password);
+      register(email, name, password);
     }
   };
-	
-  const register = async (email,name,password) => {
-		
+
+  const register = async (email, name, password, tasks = []) => {
     try {
-      await cache.set(email, JSON.stringify({password,name}));
+      await cache.set(email, JSON.stringify({ password, name, tasks }));
     } catch (error) {}
     navigation.navigate('LoginScreen');
   };
-	
+
   const onError = (errorMessage, input) => {
     setErrors((state) => ({
       ...state,
@@ -158,7 +157,14 @@ export default function RegPage({ navigation }) {
             justifyContent: 'center',
           })}>
           <Text style={styles.text}>Already have an account?</Text>
-          <Text style={StyleSheet.compose(styles.text, styles.link)}> Sign In</Text>
+          <Text
+            onPress={() => {
+              navigation.navigate('LoginScreen');
+            }}
+            style={StyleSheet.compose(styles.text, styles.link)}>
+            {' '}
+            Sign In
+          </Text>
         </View>
       </ScrollView>
     </View>

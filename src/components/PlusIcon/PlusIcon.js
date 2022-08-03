@@ -1,10 +1,10 @@
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Svg, Path } from 'react-native-svg';
 
-const PlusIcon = () => {
+const PlusIcon = ({ onPress }) => {
   return (
-    <View>
+    <TouchableOpacity onPress={onPress}>
       <Svg
         width="24"
         height="24"
@@ -31,10 +31,9 @@ const PlusIcon = () => {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-					
         />
       </Svg>
-    </View>
+    </TouchableOpacity>
   );
 };
 

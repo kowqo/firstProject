@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Poppins-Medium',
-    fontSize: 64,
+    fontSize: 50,
     fontWeight: '700',
-    lineHeight: 85,
+    lineHeight: 80,
     zIndex: 2,
   },
   lower: {
