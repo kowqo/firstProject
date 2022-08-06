@@ -10,5 +10,8 @@ const mainStyles = StyleSheet.create({
 		flex: 1,
 		overflow: 'hidden',
 	},
+	wrapper: {
+		flex: 1,
+	},
 });
 export default mainStyles;

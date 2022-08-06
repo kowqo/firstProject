@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'flex-end',
 		flex: 1,
+		position: 'relative',
 	},
 	text: {
 		fontFamily: 'Poppins-Light',

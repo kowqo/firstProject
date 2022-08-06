@@ -1,5 +1,13 @@
-import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
-import React, { useState } from 'react';
+import {
+	View,
+	Text,
+	StyleSheet,
+	ScrollView,
+	KeyboardAvoidingView,
+	Platform,
+	SafeAreaView,
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
 import Ellipses from '../components/Ellipses/Ellipses';
 import CustomInput from '../components/CustomInput/CustomInput';
 import CustomButton from '../components/CustomButton/CustomButton';
@@ -8,7 +16,7 @@ import textStyles from '../styles/textStyles';
 import styles from '../styles/regPageStyles';
 import { store } from '../store/store';
 import useValidate from '../hooks/useValidate';
-import { useHeaderHeight } from '@react-navigation/elements';
+import KeyboardManager from 'react-native-keyboard-manager';
 
 export default function RegPage({ navigation }) {
 	const [inputValues, setInputValues] = useState({
@@ -24,8 +32,25 @@ export default function RegPage({ navigation }) {
 		'password',
 		'confirmPassword',
 	]);
+	useEffect(() => {
+		KeyboardManager.resignFirstResponder();
+	}, []);
 
-	const height = useHeaderHeight();
+	/* KeyboardManager.setEnable(true);
+	KeyboardManager.setEnableDebugging(false);
+	KeyboardManager.setKeyboardDistanceFromTextField(30);
+	KeyboardManager.setLayoutIfNeededOnUpdate(true);
+	KeyboardManager.setEnableAutoToolbar(true);
+	KeyboardManager.setToolbarDoneBarButtonItemText('Done');
+	KeyboardManager.setToolbarManageBehaviourBy('subviews'); // "subviews" | "tag" | "position"
+	KeyboardManager.setToolbarPreviousNextButtonEnable(false);
+	KeyboardManager.setToolbarTintColor('#0000FF'); // Only #000000 format is supported
+	KeyboardManager.setToolbarBarTintColor('#FFFFFF'); // Only #000000 format is supported
+	KeyboardManager.setShouldShowToolbarPlaceholder(true);
+	KeyboardManager.setOverrideKeyboardAppearance(false);
+	KeyboardManager.setKeyboardAppearance('default'); // "default" | "light" | "dark"
+	KeyboardManager.setShouldResignOnTouchOutside(true);
+	KeyboardManager.setShouldPlayInputClicks(true); */
 
 	const onSubmit = () => {
 		const { email, name, password } = inputValues;
@@ -55,7 +80,7 @@ export default function RegPage({ navigation }) {
 					We help you meet up you tasks on time.
 				</Text>
 
-				<KeyboardAvoidingView keyboardVerticalOffset={height} behavior="padding">
+				<View>
 					<CustomInput
 						rule={'name'}
 						textContentType={'name'}
@@ -94,6 +119,7 @@ export default function RegPage({ navigation }) {
 						value={inputValues.password}
 						error={errors.password}
 						onFocus={() => {
+							KeyboardManager.setEnable(1);
 							onError('', 'password');
 						}}
 					/>
@@ -111,7 +137,7 @@ export default function RegPage({ navigation }) {
 							onError('', 'confirmPassword');
 						}}
 					/>
-				</KeyboardAvoidingView>
+				</View>
 				<CustomButton title={'Registration'} onPress={onSubmit} />
 				<View style={styles.bottomBlock}>
 					<Text style={styles.text}>Already have an account?</Text>
