@@ -3,7 +3,6 @@ import React from 'react';
 import inputStyles from './styles';
 
 const CustomInput = ({ placeholder, rule, error, ...props }) => {
-
 	const errorText = error ? <Text style={inputStyles.errorText}>{error}</Text> : null;
 
 	return (
@@ -15,7 +14,8 @@ const CustomInput = ({ placeholder, rule, error, ...props }) => {
 					borderColor: error ? 'red' : '#fff',
 					borderWidth: 2,
 				})}
-				{...props}/>
+				{...props}
+			/>
 			{errorText}
 		</View>
 	);

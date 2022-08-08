@@ -6,7 +6,7 @@ const Task = ({ text, id, comp = false, onComplete }) => {
 	const [complete, setComplete] = useState(comp);
 
 	const renderLine = complete ? <View style={styles.completeLine}></View> : null;
-	
+
 	const boxStyles = complete ? [styles.box, styles.complete] : [styles.box];
 
 	return (

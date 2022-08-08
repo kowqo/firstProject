@@ -1,5 +1,5 @@
 module.exports = {
-  root: true,
-  extends: '@react-native-community',
-  useTabs: true,
+	root: true,
+	extends: '@react-native-community',
+	useTabs: true,
 };
