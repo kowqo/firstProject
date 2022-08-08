@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
 		width: 173,
 		height: 173,
 		borderRadius: 100,
-
 		zIndex: 100,
 	},
 	all: {
@@ -24,4 +23,5 @@ const styles = StyleSheet.create({
 		backgroundColor: 'rgba(255, 252, 238, 0.47)',
 	},
 });
+
 export default styles;

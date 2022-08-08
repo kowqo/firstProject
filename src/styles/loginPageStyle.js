@@ -2,10 +2,9 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
 	header: {
-		alignSelf: 'flex-start',
 		marginLeft: 97,
-		marginTop: 236,
 		marginBottom: 47,
+		alignSelf: 'flex-start',
 	},
 	text: {
 		fontFamily: 'Poppins-Light',
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
 	signInBlock: {
 		flexDirection: 'row',
 		marginTop: 24,
-		justifyContent: 'center',
+		marginBottom: 10,
 	},
 });
 

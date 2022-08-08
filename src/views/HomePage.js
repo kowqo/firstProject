@@ -1,24 +1,14 @@
-import {
-	View,
-	Text,
-	StyleSheet,
-	Image,
-	ScrollView,
-	Alert,
-	FlatList,
-	TouchableOpacity,
-} from 'react-native';
+import { View, Text, Image, Alert, FlatList } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import Ellipses from '../components/Ellipses/Ellipses';
 import mainStyles from '../styles/main';
 import textStyles from '../styles/textStyles';
-import TimerRectangle from '../components/TimerRectangle/TimerRectangle';
-import Task from '../components/Task/Task';
+import { Ellipses, Task, TimerRectangle } from '../components';
 import uuid from 'react-native-uuid';
 import { store } from '../store/store';
 import LogOutIcon from '../assets/images/logout.svg';
 import PlusIcon from '../assets/images/plussquare.svg';
 import styles from '../styles/homePageStyles';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const HomePage = ({ route, navigation }) => {
 	const [time, setTime] = useState([]);
@@ -45,7 +35,6 @@ const HomePage = ({ route, navigation }) => {
 		uploadTasks(email, userData);
 	}, [userData]);
 
-
 	const onLoadTodo = async (email) => {
 		try {
 			const userData = await store.get(email);
@@ -55,8 +44,6 @@ const HomePage = ({ route, navigation }) => {
 			Alert.alert('error', 'Something went wrong');
 		}
 	};
-
-	
 
 	const onComplete = (id) => {
 		const filteredTasks = userData.tasks.map((task) => {
@@ -78,12 +65,14 @@ const HomePage = ({ route, navigation }) => {
 		Alert.prompt('Enter Task', '', [
 			{
 				text: 'Cancel',
-				onPress: () => console.log('Cancel Pressed'),
+				onPress: () => {},
 				style: 'cancel',
 			},
 			{
 				text: 'OK',
-				onPress: (text) => addTodoHadler(text),
+				onPress: (text) => {
+					if (text.trim() !== '') addTodoHadler(text);
+				},
 			},
 		]);
 	};
@@ -104,14 +93,15 @@ const HomePage = ({ route, navigation }) => {
 			<Task id={item.id} onComplete={onComplete} key={item.key} comp={item.comp} text={item.text} />
 		);
 	};
-
 	return (
-		<View style={[mainStyles.container, styles.container]}>
+		<SafeAreaView
+			style={[mainStyles.container, styles.container]}
+			edges={['left', 'right', 'bottom']}>
 			<Ellipses home={true} />
 			<View style={styles.headerContainer}>
 				<LogOutIcon style={styles.logo} onPress={onLogout} />
 				<Image style={styles.image} source={require('../assets/images/Andrew.png')} />
-				<Text style={textStyles.header}>Welcome {userData.name}</Text>
+				<Text style={textStyles.header}>Welcome {userData.name}!</Text>
 			</View>
 			<View style={styles.timer}>
 				<TimerRectangle>{time[0]}</TimerRectangle>
@@ -121,7 +111,7 @@ const HomePage = ({ route, navigation }) => {
 				<TimerRectangle>{time[2]}</TimerRectangle>
 			</View>
 			<View style={styles.tasksBlock}>
-				<Text style={styles.taskH1}>Tasks List</Text>
+				<Text style={[textStyles.header, styles.taskH1]}>Tasks List</Text>
 				<View style={styles.listWrapper}>
 					<FlatList
 						bounces={false}
@@ -141,7 +131,7 @@ const HomePage = ({ route, navigation }) => {
 						ListEmptyComponent={<Text>No Tasks</Text>}></FlatList>
 				</View>
 			</View>
-		</View>
+		</SafeAreaView>
 	);
 };
 

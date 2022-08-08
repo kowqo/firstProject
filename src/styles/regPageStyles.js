@@ -1,11 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-	container: {
-		justifyContent: 'flex-end',
-		flex: 1,
-		position: 'relative',
-	},
 	text: {
 		fontFamily: 'Poppins-Light',
 		fontSize: 14,
@@ -13,10 +8,11 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 	header: {
+		marginTop: 230,
 		marginBottom: 16,
 	},
 	p: {
-		marginBottom: 66,
+		marginBottom: 85,
 	},
 	link: {
 		fontFamily: 'Poppins-Bold',
@@ -24,8 +20,9 @@ const styles = StyleSheet.create({
 	},
 	bottomBlock: {
 		flexDirection: 'row',
-		marginTop: 12,
+		marginTop: 22,
 		justifyContent: 'center',
+		marginBottom: 10,
 	},
 });
 

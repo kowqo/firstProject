@@ -23,4 +23,5 @@ const buttonStyle = StyleSheet.create({
 		fontFamily: 'Poppins-Bold',
 	},
 });
+
 export default buttonStyle;

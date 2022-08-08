@@ -59,7 +59,6 @@ const useValidate = (options = ['name', 'email', 'password', 'confirmPassword'])
 				valid = false;
 			}
 		}
-
 		return valid;
 	};
 

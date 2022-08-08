@@ -29,4 +29,5 @@ const styles = StyleSheet.create({
 		left: -5,
 	},
 });
+
 export default styles;

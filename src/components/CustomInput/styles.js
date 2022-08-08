@@ -21,4 +21,5 @@ const inputStyles = StyleSheet.create({
 		color: 'red',
 	},
 });
+
 export default inputStyles;

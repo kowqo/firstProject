@@ -1,19 +1,25 @@
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
-import React from 'react';
-import CustomButton from '../components/CustomButton/CustomButton';
+import { View, Text, StyleSheet, Platform } from 'react-native';
+import React, { useEffect } from 'react';
 import textStyles from '../styles/textStyles';
-import Ellipses from '../components/Ellipses/Ellipses';
 import mainStyles from '../styles/main';
 import SlashPageImage from '../assets/images/slash.svg';
 import styles from '../styles/slashPageStyle';
+import KeyboardManager from 'react-native-keyboard-manager';
+import { CustomButton, Ellipses } from '../components';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Slash = ({ navigation }) => {
+	useEffect(() => {
+		if (Platform.OS === 'ios') {
+			KeyboardManager.resignFirstResponder();
+			KeyboardManager.setEnable(true);
+		}
+	}, []);
+
 	return (
 		<SafeAreaView style={mainStyles.container}>
 			<Ellipses />
-			<View style={styles.image}>
-				<SlashPageImage />
-			</View>
+			<SlashPageImage style={styles.image} />
 			<Text style={StyleSheet.compose(textStyles.header, styles.header)}>
 				Let’s get things done on time
 			</Text>
@@ -21,7 +27,9 @@ const Slash = ({ navigation }) => {
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus praesent purus tincidunt ut
 				cursus vitae. Nisl, vitae nulla lectus tortor, est a aliquam. Pretium netus{' '}
 			</Text>
-			<CustomButton title="Get Started" onPress={() => navigation.navigate('Registration')} />
+			<View style={styles.button}>
+				<CustomButton title="Get Started" onPress={() => navigation.navigate('Registration')} />
+			</View>
 		</SafeAreaView>
 	);
 };

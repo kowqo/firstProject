@@ -14,4 +14,5 @@ const textStyles = StyleSheet.create({
 		textAlign: 'center',
 	},
 });
+
 export default textStyles;

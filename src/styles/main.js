@@ -2,10 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const mainStyles = StyleSheet.create({
 	container: {
-		padding: 20,
 		backgroundColor: '#e5e5e5',
-		display: 'flex',
-		justifyContent: 'center',
+		justifyContent: 'flex-end',
 		alignItems: 'center',
 		flex: 1,
 		overflow: 'hidden',
@@ -14,4 +12,5 @@ const mainStyles = StyleSheet.create({
 		flex: 1,
 	},
 });
+
 export default mainStyles;
