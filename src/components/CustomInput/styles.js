@@ -12,6 +12,7 @@ const inputStyles = StyleSheet.create({
 		borderRadius: 30,
 		paddingLeft: 40,
 		fontFamily: 'Poppins-Light',
+		borderWidth: 2,
 	},
 	errorText: {
 		fontFamily: 'Poppins-Light',

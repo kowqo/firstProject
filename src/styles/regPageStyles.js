@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+	container: {
+		backgroundColor: '#e5e5e5',
+		justifyContent: 'flex-end',
+		alignItems: 'center',
+		flexGrow: 1,
+	},
 	text: {
 		fontFamily: 'Poppins-Light',
 		fontSize: 14,
@@ -8,7 +14,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 	header: {
-		marginTop: 230,
 		marginBottom: 16,
 	},
 	p: {
@@ -22,7 +27,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		marginTop: 22,
 		justifyContent: 'center',
-		marginBottom: 10,
+		marginBottom: 45,
 	},
 });
 

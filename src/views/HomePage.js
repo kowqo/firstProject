@@ -2,16 +2,19 @@ import { View, Text, Image, Alert, FlatList } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import mainStyles from '../styles/main';
 import textStyles from '../styles/textStyles';
-import { Ellipses, Task, TimerRectangle } from '../components';
+import { Ellipses, Prompt, Task, TimerRectangle } from '../components';
 import uuid from 'react-native-uuid';
 import { store } from '../store/store';
 import LogOutIcon from '../assets/images/logout.svg';
 import PlusIcon from '../assets/images/plussquare.svg';
 import styles from '../styles/homePageStyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Dialog from 'react-native-dialog';
 
 const HomePage = ({ route, navigation }) => {
 	const [time, setTime] = useState([]);
+
+	const [visible, setVisible] = useState(false);
 
 	const [userData, setUserData] = useState([]);
 
@@ -62,19 +65,15 @@ const HomePage = ({ route, navigation }) => {
 	const onLogout = () => navigation.navigate('Slash');
 
 	const addToDo = () => {
-		Alert.prompt('Enter Task', '', [
-			{
-				text: 'Cancel',
-				onPress: () => {},
-				style: 'cancel',
-			},
-			{
-				text: 'OK',
-				onPress: (text) => {
-					if (text.trim() !== '') addTodoHadler(text);
-				},
-			},
-		]);
+		setVisible(true);
+	};
+
+	const handleCancel = () => {
+		setVisible(false);
+	};
+	const handleConfirm = (text) => {
+		setVisible(false);
+		if (text.trim() !== '') addTodoHadler(text);
 	};
 
 	const uploadTasks = async (email, userData) => {
@@ -131,6 +130,7 @@ const HomePage = ({ route, navigation }) => {
 						ListEmptyComponent={<Text>No Tasks</Text>}></FlatList>
 				</View>
 			</View>
+			<Prompt visible={visible} handleCancel={handleCancel} handleConfirm={handleConfirm} />
 		</SafeAreaView>
 	);
 };

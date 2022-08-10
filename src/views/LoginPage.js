@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { CustomButton, Ellipses, CustomInput } from '../components';
 import mainStyles from '../styles/main';
@@ -48,47 +48,52 @@ const LoginPage = ({ navigation }) => {
 	};
 
 	return (
-		<SafeAreaView style={mainStyles.container}>
-			<Ellipses />
-			<Text style={StyleSheet.compose(textStyles.header, styles.header)}>Welcome Back!</Text>
-			<LoginPageImage style={styles.loginImage} />
-			<CustomInput
-				rule={'email'}
-				textContentType={'emailAddress'}
-				placeholder={'Enter your email'}
-				onChangeText={(text) => {
-					onChangeText(text.trim(), 'email');
-				}}
-				error={errors.email}
-				onFocus={() => {
-					onError('', 'email');
-				}}
-			/>
-			<CustomInput
-				rule={'password'}
-				secureTextEntry
-				textContentType={'newPassword'}
-				placeholder={'Enter password'}
-				onChangeText={(text) => {
-					onChangeText(text.trim(), 'password');
-				}}
-				error={errors.password}
-				onFocus={() => {
-					onError('', 'password');
-				}}
-			/>
-			<Text style={[styles.text, styles.link, styles.forgot]}>Forgot Password</Text>
-			<CustomButton title={'Sign in'} onPress={onSumbit} />
-			<View style={styles.signInBlock}>
-				<Text style={styles.text}>Don’t have an account?</Text>
-				<Text
-					onPress={() => {
-						navigation.goBack();
+		<SafeAreaView edges={['left', 'right']} style={mainStyles.wrapper}>
+			<ScrollView
+				bounces="false"
+				keyboardShouldPersistTaps="never"
+				contentContainerStyle={mainStyles.container}>
+				<Ellipses />
+				<Text style={StyleSheet.compose(textStyles.header, styles.header)}>Welcome Back!</Text>
+				<LoginPageImage style={styles.loginImage} />
+				<CustomInput
+					rule={'email'}
+					textContentType={'emailAddress'}
+					placeholder={'Enter your email'}
+					onChangeText={(text) => {
+						onChangeText(text.trim(), 'email');
 					}}
-					style={StyleSheet.compose(styles.text, styles.link)}>
-					&nbsp;Sign Up
-				</Text>
-			</View>
+					error={errors.email}
+					onFocus={() => {
+						onError('', 'email');
+					}}
+				/>
+				<CustomInput
+					rule={'password'}
+					secureTextEntry
+					textContentType={'newPassword'}
+					placeholder={'Enter password'}
+					onChangeText={(text) => {
+						onChangeText(text.trim(), 'password');
+					}}
+					error={errors.password}
+					onFocus={() => {
+						onError('', 'password');
+					}}
+				/>
+				<Text style={[styles.text, styles.link, styles.forgot]}>Forgot Password</Text>
+				<CustomButton title={'Sign in'} onPress={onSumbit} />
+				<View style={styles.signInBlock}>
+					<Text style={styles.text}>Don’t have an account?</Text>
+					<Text
+						onPress={() => {
+							navigation.goBack();
+						}}
+						style={StyleSheet.compose(styles.text, styles.link)}>
+						&nbsp;Sign Up
+					</Text>
+				</View>
+			</ScrollView>
 		</SafeAreaView>
 	);
 };

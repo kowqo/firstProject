@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 	signInBlock: {
 		flexDirection: 'row',
 		marginTop: 24,
-		marginBottom: 10,
+		marginBottom: 45,
 	},
 });
 
