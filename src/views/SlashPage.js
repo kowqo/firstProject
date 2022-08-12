@@ -5,7 +5,7 @@ import mainStyles from '../styles/main';
 import SlashPageImage from '../assets/images/slash.svg';
 import styles from '../styles/slashPageStyle';
 import KeyboardManager from 'react-native-keyboard-manager';
-import { CustomButton, Ellipses } from '../components';
+import { CustomButton, CustomInput, Ellipses } from '../components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Slash = ({ navigation }) => {
